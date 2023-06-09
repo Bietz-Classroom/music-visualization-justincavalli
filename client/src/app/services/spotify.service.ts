@@ -7,6 +7,7 @@ import { TrackData } from '../data/track-data';
 import { ResourceData } from '../data/resource-data';
 import { ProfileData } from '../data/profile-data';
 import { TrackFeature } from '../data/track-feature';
+import { PlaylistData } from '../data/playlist-data';
 
 @Injectable({
   providedIn: 'root'
@@ -34,10 +35,23 @@ export class SpotifyService {
   }
 
   searchFor(category:string, resource:string):Promise<ResourceData[]> {
+    console.log("category is " + category);
     //TODO: identify the search endpoint in the express webserver (routes/index.js) and send the request to express.
     //Make sure you're encoding the resource with encodeURIComponent().
     //Depending on the category (artist, track, album, playlist, etc.), return an array of that type of data.
     //JavaScript's "map" function might be useful for this, but there are other ways of building the array.
+    switch (category) {
+      case "playlist": {
+        return this.sendRequestToExpress('/search/playlist/' + encodeURIComponent(resource)).then((data) => {
+          var playlists = [];
+          for(var i = 0; i < data.playlists.items.length; i++) {
+            playlists[i] = new PlaylistData(data.playlists.items[i]);
+          }
+          return playlists;
+        });
+        break;
+      }
+    }
     return null as any;
   }
 
