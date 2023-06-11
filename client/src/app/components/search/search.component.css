@@ -5,3 +5,51 @@ input {
 select {
 	margin: 10px;
 }
+
+.search-container {
+	margin: auto;
+	text-align: center;
+}
+
+.cards-container {
+    width: 90vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 12px;
+	margin: auto;
+}
+
+.card-container {
+	display: flex;
+	flex-direction: row;
+	background-color: darkgrey;
+	padding: 25px;
+	border-radius: 10px;
+	cursor: pointer;
+  }
+
+.layout {
+	display: flex;
+	flex-direction: row;
+}
+
+img {
+	width: 180px;
+    height: 180px;
+	border-radius: 5px;
+	flex: 1;
+}
+
+.info-container {
+	flex: 3;
+	margin-left: 10px;
+	color: white;
+}
+
+p {
+	margin-bottom: 0.5rem;
+}
+
+h4 {
+	color: black;
+}

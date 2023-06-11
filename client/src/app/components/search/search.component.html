@@ -1,8 +1,23 @@
-<h1>Search Spotify</h1>
-<!--TODO: bind input's model to searchString-->
-<input [(ngModel)]="searchString">
+<div class="search-container">
+    <h1>Search Spotify Playlists</h1>
+    <!--TODO: bind input's model to searchString-->
+    <input [(ngModel)]="searchString">
+    <!--TODO: Call search function when the button is clicked-->
+    <button class="btn btn-light" (click)="search()">Search</button>
+</div>
 
-<!--TODO: Call search function when the button is clicked-->
-<button class="btn btn-light" (click)="search()">Search</button>
 <!--TODO: Display results. One option: use a carousel component. Bind carousel's resources and give it a static carouselId.-->
 <!-- <app-carousel *ngIf="display" [resources] = "resources" [carouselId] = "resources[0].id"></app-carousel> -->
+<div class="cards-container" *ngIf="resources">
+    <div class="card-container" *ngFor="let resource of resources">
+        <a routerLink="/playlists/{{resource.id}}" class="layout">
+            <img *ngIf="resource.imageURL != undefined" src={{resource.imageURL}} />
+            <div class="info-container">
+                <h4>{{resource.name}}</h4>
+                <p>Created by: {{resource.owner}}</p>
+                <p>Length: {{resource.length}} tracks</p>
+                <p *ngIf="resource.description != ''">Description: {{resource.description}}</p>
+            </div>
+        </a>
+    </div>
+</div>
