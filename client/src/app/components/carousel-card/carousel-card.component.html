@@ -1,9 +1,9 @@
 <!--TODO: bind href to the appropriate local URL for the playlist.-->
-<a>
+<a href="{{resource.category}}/{{resource.id}}">
 <!--TODO bind src with the playlist image URL-->
-<img class="d-block w-100">
+<img class="d-block w-100" src="{{resource.imagURL}}">
 <div class="carousel-caption d-none d-md-block">
 	<!--TODO: populate h5 with the playlist name-->
-	<h5>???</h5>
+	<h5>{{resource.name}}</h5>
 </div>
 </a>

@@ -15,6 +15,7 @@ export class SearchComponent implements OnInit {
   searchString:string;
   searchCategory:string = 'playlist';
   resources:ResourceData[];
+  display: boolean = false;
 
   constructor(private spotifyService:SpotifyService) { }
 
@@ -26,6 +27,7 @@ export class SearchComponent implements OnInit {
 
     this.spotifyService.searchFor(this.searchCategory, this.searchString).then((response) => {
       this.resources = response;
+      this.display = true;
       console.log(this.resources);
     })
   }
