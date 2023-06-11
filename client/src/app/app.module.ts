@@ -8,6 +8,7 @@ import { SearchComponent } from './components/search/search.component';
 import { TrackListComponent } from './components/track-list/track-list.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { VegaVizComponent } from './components/vega-viz/vega-viz.component';
+import { PlaylistPageComponent } from './pages/playlist-page/playlist-page.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { VegaVizComponent } from './components/vega-viz/vega-viz.component';
     TrackListComponent,
     HomePageComponent,
     VegaVizComponent,
+    PlaylistPageComponent,
   ],
   imports: [
     BrowserModule,

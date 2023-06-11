@@ -10,7 +10,7 @@
 <!-- <app-carousel *ngIf="display" [resources] = "resources" [carouselId] = "resources[0].id"></app-carousel> -->
 <div class="cards-container" *ngIf="resources">
     <div class="card-container" *ngFor="let resource of resources">
-        <a routerLink="/playlists/{{resource.id}}" class="layout">
+        <a routerLink="/playlist/{{resource.id}}" class="layout">
             <img *ngIf="resource.imageURL != undefined" src={{resource.imageURL}} />
             <div class="info-container">
                 <h4>{{resource.name}}</h4>
