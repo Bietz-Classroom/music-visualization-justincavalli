@@ -1,0 +1,23 @@
+.title-container {
+    color: white;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+.data-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.vega-container {
+    background-color: #212121;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.tracklist-container {
+    background-color: #212121;
+}
