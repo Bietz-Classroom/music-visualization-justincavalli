@@ -1,9 +1,9 @@
 <div class="title-container">
 	<h1 *ngIf="playlistdata">{{playlistdata.name}}</h1>
 </div>
-<div class="data-container">
+<div class="data-container" *ngIf="playlistdata && featuredata.length == playlistdata.length">
 	<div class="vega-container">
-		<app-vega-viz class="col-12"></app-vega-viz>
+		<app-vega-viz class="col-12" [features]="featuredata"></app-vega-viz>
 	</div>
 	<div class="tracklist-container" *ngIf="playlistdata">
 		<app-track-list [tracks]="playlistdata.tracks"></app-track-list>

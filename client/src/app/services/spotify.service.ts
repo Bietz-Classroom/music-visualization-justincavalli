@@ -106,8 +106,8 @@ export class SpotifyService {
     //TODO: use the audio features for track endpoint to make a request to express.
     return this.sendRequestToExpress('/track-audio-features/' + trackId).then((data) => {
       var result = [];
-      result.push(new TrackFeature("Tempo", data["Tempo"]));
-      result.push(new TrackFeature("Energy", data["Energy"]));
+      result.push(new TrackFeature("Tempo", data["tempo"]));
+      result.push(new TrackFeature("Energy", data["energy"]));
       return result;
     })
   }
