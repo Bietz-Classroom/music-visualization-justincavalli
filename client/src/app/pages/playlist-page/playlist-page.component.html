@@ -1,11 +1,11 @@
 <div class="title-container">
-	<h1>Placeholder Playlist Name</h1>
+	<h1 *ngIf="playlistdata">{{playlistdata.name}}</h1>
 </div>
 <div class="data-container">
 	<div class="vega-container">
 		<app-vega-viz class="col-12"></app-vega-viz>
 	</div>
-	<div class="tracklist-container">
-		
+	<div class="tracklist-container" *ngIf="playlistdata">
+		<app-track-list [tracks]="playlistdata.tracks"></app-track-list>
 	</div>
 </div>

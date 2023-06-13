@@ -16,16 +16,12 @@ export class PlaylistPageComponent implements OnInit{
 
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
-    console.log(this.id);
-    // this.grabData();
+    this.grabData();
   }
 
   grabData() {
     this.spotifyService.getPlaylist(this.id).then(( data ) => {
-      console.log("after fetching data");
       this.playlistdata = data;
-      console.log("after setting data");
-      // console.log(this.playlistdata.name);
     })
   }
 }

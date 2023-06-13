@@ -5,6 +5,7 @@ export class PlaylistData extends ResourceData {
     description: string;
     owner: string;
     length: number;
+    tracks: TrackData[];
 
 	constructor(objectModel:{}) {
 		super(objectModel);
@@ -15,6 +16,15 @@ export class PlaylistData extends ResourceData {
 
         this.owner = objectModel['owner'].display_name;
         this.length = objectModel['tracks'].total;
+
+        if(objectModel['tracks'].items) {
+            var playlistTrackObjects = [];
+            playlistTrackObjects = objectModel['tracks'].items;
+            this.tracks = [];
+            for(let i = 0; i < playlistTrackObjects.length; i++) {
+                this.tracks.push(new TrackData(playlistTrackObjects[i].track));
+            }
+        }
 	}
 
 }

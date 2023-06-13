@@ -60,9 +60,7 @@ export class SpotifyService {
   }
 
   getPlaylist(playlistId: string):Promise<PlaylistData> {
-    console.log("the id is " + playlistId);
     return this.sendRequestToExpress('/playlist/' + playlistId).then((data) => {
-      console.log("in get playlist");
       console.log(data);
       return new PlaylistData(data);
     });
@@ -106,6 +104,11 @@ export class SpotifyService {
 
   getAudioFeaturesForTrack(trackId:string):Promise<TrackFeature[]> {
     //TODO: use the audio features for track endpoint to make a request to express.
-    return null as any;
+    return this.sendRequestToExpress('/track-audio-features/' + trackId).then((data) => {
+      var result = [];
+      result.push(new TrackFeature("Tempo", data["Tempo"]));
+      result.push(new TrackFeature("Energy", data["Energy"]));
+      return result;
+    })
   }
 }
