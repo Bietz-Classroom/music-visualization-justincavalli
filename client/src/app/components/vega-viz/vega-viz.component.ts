@@ -30,7 +30,7 @@ export class VegaVizComponent implements OnInit {
       "encoding": {
         "x": {"field": "Tempo (BPM)", "type": "quantitative", "axis": {"grid": false}},
         "y": {"field": "Energy", "type": "quantitative", "axis": {"grid": false}},
-        "tooltip": {"field": "Name", "type": "nominal"},
+        "tooltip": {"field": "Name", "type": "nominal", "title": "Name"},
         "href": {"target": "_blank", "field": "URL", "type": "nominal"}
       },
       "config": {
