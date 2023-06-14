@@ -1,7 +1,9 @@
 <div class="title-container">
-	<h1 *ngIf="playlistdata">{{playlistdata.name}}</h1>
+	<img *ngIf="playlistdata && playlistdata.imageURL != undefined" src={{playlistdata.imageURL}} alt=""/>
+	<h1 *ngIf="playlistdata"><a target="_blank" href="https://open.spotify.com/playlist/{{playlistdata.id}}">{{playlistdata.name}}</a></h1>
 </div>
-<div class="data-container" *ngIf="playlistdata && featuredata.length == playlistdata.length">
+<div *ngIf="!playlistdata || featuredata.length != playlistdata.length && featuredata.length != 100" style="color: white; text-align: center;">Loading...</div>
+<div class="data-container" *ngIf="playlistdata && featuredata.length == playlistdata.length || featuredata.length == 100">
 	<div class="vega-container">
 		<app-vega-viz class="col-12" [features]="featuredata"></app-vega-viz>
 	</div>

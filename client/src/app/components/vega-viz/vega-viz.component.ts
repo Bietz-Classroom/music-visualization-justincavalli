@@ -26,10 +26,12 @@ export class VegaVizComponent implements OnInit {
         "color": "#1db954",
         "size": 100
       },
+      
       "encoding": {
         "x": {"field": "Tempo (BPM)", "type": "quantitative", "axis": {"grid": false}},
         "y": {"field": "Energy", "type": "quantitative", "axis": {"grid": false}},
-        "tooltip": {"field": "Name", "type": "nominal"}
+        "tooltip": {"field": "Name", "type": "nominal"},
+        "href": {"target": "_blank", "field": "URL", "type": "nominal"}
       },
       "config": {
         "background": "#212121",

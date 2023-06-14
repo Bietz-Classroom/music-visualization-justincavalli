@@ -46,11 +46,8 @@ export class SpotifyService {
         return this.sendRequestToExpress('/search/playlist/' + encodeURIComponent(resource)).then((data) => {
           var playlists = [];
           for(var i = 0; i < data.playlists.items.length; i++) {
-            console.log("before first loop");
             playlists[i] = new PlaylistData(data.playlists.items[i]);
-            console.log("looping through");
           }
-          console.log("after looping");
           return playlists;
         });
         break;
