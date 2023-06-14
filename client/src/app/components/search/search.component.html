@@ -11,6 +11,7 @@
 <!--TODO: Display results. One option: use a carousel component. Bind carousel's resources and give it a static carouselId.-->
 <!-- <app-carousel *ngIf="display" [resources] = "resources" [carouselId] = "resources[0].id"></app-carousel> -->
 <div *ngIf="!resources && searching" style="color: white; text-align: center;">Loading...</div>
+<div *ngIf="resources && resources.length == 0" style="color: white; text-align: center;">No Results for {{searchString}}</div>
 <div class="cards-container" *ngIf="resources">
     <div class="card-container" *ngFor="let resource of resources">
         <a routerLink="/playlist/{{resource.id}}" class="layout">
