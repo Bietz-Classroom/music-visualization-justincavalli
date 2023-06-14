@@ -46,17 +46,21 @@ export class SpotifyService {
         return this.sendRequestToExpress('/search/playlist/' + encodeURIComponent(resource)).then((data) => {
           var playlists = [];
           for(var i = 0; i < data.playlists.items.length; i++) {
-            console.log("before first loop");
             playlists[i] = new PlaylistData(data.playlists.items[i]);
-            console.log("looping through");
           }
-          console.log("after looping");
           return playlists;
         });
         break;
       }
     }
     return null as any;
+  }
+
+  getPlaylist(playlistId: string):Promise<PlaylistData> {
+    return this.sendRequestToExpress('/playlist/' + playlistId).then((data) => {
+      console.log(data);
+      return new PlaylistData(data);
+    });
   }
 
   getArtist(artistId:string):Promise<ArtistData> {
@@ -97,6 +101,11 @@ export class SpotifyService {
 
   getAudioFeaturesForTrack(trackId:string):Promise<TrackFeature[]> {
     //TODO: use the audio features for track endpoint to make a request to express.
-    return null as any;
+    return this.sendRequestToExpress('/track-audio-features/' + trackId).then((data) => {
+      var result = [];
+      result.push(new TrackFeature("Tempo", data["tempo"]));
+      result.push(new TrackFeature("Energy", data["energy"]));
+      return result;
+    })
   }
 }

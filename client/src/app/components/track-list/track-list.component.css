@@ -1,0 +1,25 @@
+.table-wrapper {
+    height: 70vh;
+    overflow: hidden;
+}
+
+.table-wrapper:hover {
+    overflow-y: auto;
+}
+
+.header-row {
+    background-color: #535353;
+    position: sticky;
+}
+
+.track-row {
+    background-color: #212121;
+}
+
+.track-row:hover {
+    cursor: pointer;
+}
+
+a:hover {
+    color: white;
+}

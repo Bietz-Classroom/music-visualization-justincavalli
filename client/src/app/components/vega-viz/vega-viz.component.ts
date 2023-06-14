@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import embed from 'vega-embed';
 
 @Component({
@@ -7,22 +7,40 @@ import embed from 'vega-embed';
   styleUrls: ['./vega-viz.component.css']
 })
 export class VegaVizComponent implements OnInit {
+  @Input() features: object[];
+
   ngOnInit() {
     const spec = {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-      "description": "A simple bar chart with embedded data.",
-      "title": "Example Vega-lite Chart",
-      "data": {
-        "values": [
-          {"a": "A", "b": 28}, {"a": "B", "b": 55}, {"a": "C", "b": 43},
-          {"a": "D", "b": 91}, {"a": "E", "b": 81}, {"a": "F", "b": 53},
-          {"a": "G", "b": 19}, {"a": "H", "b": 87}, {"a": "I", "b": 52}
-        ]
+      "description": "A scatterplot showing each track's tempo and energy level.",
+      "title": {
+        "text": "Tracks Energy and Tempo",
+        "color": "white",
+        "fontSize": 22
       },
-      "mark": "bar",
+      "width": 400,
+      "height": 325,
+      "data": { "values": this.features },
+      "mark": {
+        "type": "circle",
+        "color": "#1db954",
+        "size": 100
+      },
+      
       "encoding": {
-        "x": {"field": "a", "type": "nominal", "axis": {"labelAngle": 0}},
-        "y": {"field": "b", "type": "quantitative"}
+        "x": {"field": "Tempo (BPM)", "type": "quantitative", "axis": {"grid": false}},
+        "y": {"field": "Energy", "type": "quantitative", "axis": {"grid": false}},
+        "tooltip": {"field": "Name", "type": "nominal"},
+        "href": {"target": "_blank", "field": "URL", "type": "nominal"}
+      },
+      "config": {
+        "background": "#212121",
+        "axis": {
+          "titleColor": "white",
+          "titleFontSize": 18,
+          "titlePadding": 8,
+          "labelColor": "white",
+        }
       }
     } as const;
 

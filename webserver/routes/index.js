@@ -166,6 +166,11 @@ router.get('/artist/:id', function(req, res, next) {
 	makeAPIRequest('https://api.spotify.com/v1/artists/' + id, res);
 });
 
+router.get('/playlist/:id', function(req, res, next) {
+	var id = req.params.id;
+	makeAPIRequest('https://api.spotify.com/v1/playlists/' + id, res);
+});
+
 router.get('/artist-related-artists/:id', function(req, res, next) {
 	var id = req.params.id;
 	makeAPIRequest('https://api.spotify.com/v1/artists/' + id + '/related-artists', res);
